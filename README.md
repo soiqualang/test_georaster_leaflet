@@ -8,7 +8,7 @@ add file `vn1.tif` kích thước ~ `1Mb2`
 
 https://soiqualang.github.io/test_georaster_leaflet/
 
-> Kết quả, lag quá. Không khả thi khi áp dụng thực tế :')
+> Kết quả, lag quá. Không khả thi khi áp dụng thực tế để view file có dung lượng lớn :')
 
 <img src="img/h1.png">
 
