@@ -1,3 +1,15 @@
+# test_georaster_leaflet
+
+Thử nghiệm `load geotiff với leaflet`
+
+add file `vn1.tif` kích thước ~ `1Mb2`
+
+> Kết quả, lag quá. Không khả thi khi áp dụng thực tế :')
+
+<img src="img/h1.png">
+
+---
+
 # georaster-layer-for-leaflet
 Display GeoTIFFs and soon other types of rasters on your Leaflet Map
 
