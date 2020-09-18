@@ -4,6 +4,10 @@ Thử nghiệm `load geotiff với leaflet`
 
 add file `vn1.tif` kích thước ~ `1Mb2`
 
+> Demo:
+
+https://soiqualang.github.io/test_georaster_leaflet/
+
 > Kết quả, lag quá. Không khả thi khi áp dụng thực tế :')
 
 <img src="img/h1.png">
