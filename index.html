@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.0.3/dist/leaflet.css"/>
+    <style>
+      #map {
+        bottom: 0;
+        left: 0;
+        position: absolute;
+        right: 0;
+        top: 0;
+      }
+    </style>
+  </head>
+  <body>
+    <div id="map"></div>
+    <script src="https://unpkg.com/browse/whatwg-fetch@3.2.0/dist/fetch.umd.js"></script>
+    <script src="https://unpkg.com/leaflet@1.0.3/dist/leaflet.js"></script>
+    <script src="https://unpkg.com/georaster"></script>
+    <script src="georaster-layer-for-leaflet.min.js"></script>
+    <script>
+      // initalize leaflet map
+	  // https://www.google.com/maps/@16.6273053,107.3048387,5.75z
+      var map = L.map('map').setView([16.6273053,107.3048387], 6);
+	  
+      L.tileLayer('https://{s}.dothanhlong.org/basemap/hanhchinh/zxy/t3/s/{z}/{x}/{y}.png', {
+          attribution: '&copy; <a href="http://osm.org/copyright">Google Map</a> contributors'
+      }).addTo(map);
+	  
+	  var testWMS = "https://ogcie.iblsoft.com/metocean/wms";
+	  var baseLayer=L.tileLayer.wms(testWMS, {
+		layers: 'foreground-lines',
+		format: 'image/png',
+		transparent: true,
+		crs: L.CRS.EPSG4326
+	  });
+
+      var url_to_geotiff_file = "vn1.tif";
+
+      fetch(url_to_geotiff_file)
+        .then(function (response) { return response.arrayBuffer(); })
+        .then(function (arrayBuffer) {
+          parseGeoraster(arrayBuffer).then(function (georaster) {
+            console.log("georaster:", georaster);
+            var layer = new GeoRasterLayer({
+              georaster: georaster,
+              resolution: 512
+            });
+            layer.addTo(map);
+            //map.fitBounds(layer.getBounds());
+        });
+      });
+	  
+	  baseLayer.addTo(map);
+    </script>
+  </body>
+</html>
